@@ -1,0 +1,25 @@
+name: MyProject
+
+servers:
+- name: sampledemo.neotys.com
+  host: sampledemo.neotys.com
+  scheme: https
+user_paths:
+- name: MyUserPath
+  actions:
+     steps:
+     - request:
+        server: sampledemo.neotys.com
+        url: /
+populations:
+- name: MyPopulation
+  user_paths:
+  - name: MyUserPath
+    distribution: 100%
+scenarios:
+- name: MyScenario
+  populations:
+  - name: MyPopulation
+    constant_load:
+      users: 2
+      duration: 30s
